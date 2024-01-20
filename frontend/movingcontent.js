@@ -23,6 +23,20 @@ function app() {
     window.addEventListener('load', init);
 }
 
+async function shift() {
+  if (position.x < 40 || position.x > window.innerWidth - 40 || position.y < 40 || position.y > window.innerHeight + 40) {
+
+}
+
+async function animateTeleport(x, y) {
+  await animateClass('disappear');
+  pet.style.opacity = 0;
+  updatePosition(x, y);
+  pet.style.opacity = 100;
+  await animateClass('reappear');
+}
+
+
 let script = document.createElement('script');
 script.type = 'text/javascript';
 script.text = `(${app.toString()})()`;
