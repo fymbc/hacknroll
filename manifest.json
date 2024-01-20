@@ -12,9 +12,11 @@
       "all_frames": true
     }
   ],
-  "web_accessible_resources": ["images/*"],
-  "permissions": ["activeTab"],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
-  }
+  "web_accessible_resources": [
+    "images/*"
+  ],
+  "permissions": [
+    "*://*/*",
+    "<all_urls>"
+  ]
 }
