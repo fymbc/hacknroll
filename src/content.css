@@ -1,7 +1,7 @@
 .assistant {
   height: 250px;
   width: 250px;
-  background-image: url('chrome-extension://__MSG_@@extension_id__/images/state1.png');
+  background-image: url('https://i.imgur.com/RRN4npz.png');
   background-size: cover;
   position: fixed;
   bottom: 0;
@@ -23,7 +23,7 @@
 
 .assistant:hover {
 cursor: pointer;
-background-image: url('chrome-extension://__MSG_@@extension_id__/images/state2.png');
+background-image: url('https://i.imgur.com/BWA18Ur.png');
 
 }
 
