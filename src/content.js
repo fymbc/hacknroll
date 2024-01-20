@@ -71,7 +71,7 @@ function app() {
     
     function output(input) {
       let product;
-      product = answers[Math.round(Math.random() * answers.length)];
+      product = answers[Math.round(Math.random() * (answers.length - 1))];
       addChatEntry(input, product);
       return true;
     }
@@ -99,7 +99,7 @@ function app() {
       messagesContainer.appendChild(botDiv);
     
       setTimeout(() => {
-        botText.innerText = `Bot: ${product}`;
+        botText.innerText = `Gallen: ${product}`;
         loaded = true;
       }, 1000);
       
