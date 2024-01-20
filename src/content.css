@@ -66,7 +66,7 @@ cursor: pointer;
     animation: assistant-reappear 0.8s steps(6);
 }
 
-#main { 
+#mainChat { 
   position: fixed;
   width: 30%;
   height: 50%;

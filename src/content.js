@@ -39,7 +39,7 @@ function app() {
         
       function displayChatBox() {
         const inputHTML = `
-        <div id="main">
+        <div id="mainChat">
           <div id="chatHeader">
             <p id="chatboxTitle">Chat</p>
             <button id="closeChatBox" class="btn btn-danger" type="button">&times</button>
@@ -62,7 +62,7 @@ function app() {
         });
         
         document.getElementById('closeChatBox').addEventListener('click', async event => {
-          document.getElementById('main').style.display = 'none';
+          document.getElementById('mainChat').style.display = 'none';
           clicked = false;
           remainingTeleports = 99;
           count = 0;
@@ -129,13 +129,13 @@ function app() {
 
       speechBubble.addEventListener('click', function () {
         document.getElementById('root').style.display = 'none';
-    });
+      });
 
       closeButton.addEventListener('click', function (event) {
         document.getElementById('bubble').style.display = 'none';
         loopTeleport();
         event.stopPropagation();
-    });
+      });
 
     }
     
@@ -176,7 +176,6 @@ function app() {
       }
     }
 
-
     function loopTeleport() {
       for (remainingTeleports; remainingTeleports > 0; remainingTeleports--) {
         setTimeout(function() {
@@ -185,14 +184,13 @@ function app() {
       }
     }
 
-
     window.addEventListener('load', function () {
-        injectBootstrap();
         init();
     });
       
   }
-  
+};
+
 let script = document.createElement('script');
 script.type = 'text/javascript';
 script.text = `(${app.toString()})()`;
