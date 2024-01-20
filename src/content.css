@@ -1,7 +1,7 @@
 .assistant {
-  height: 600px;
-  width: 600px;
-  background-image: url("https://media.istockphoto.com/id/1437494646/vector/teddy-bear-icon-flat-design.jpg?s=612x612&w=0&k=20&c=aeYCyB52MMpbp20ZNttzOwMOTBY4-V7aXSXH5SVr30M=");
+  height: 250px;
+  width: 250px;
+  background-image: url('chrome-extension://__MSG_@@extension_id__/images/state1.png');
   background-size: cover;
   position: fixed;
   bottom: 0;
@@ -23,6 +23,8 @@
 
 .assistant:hover {
 cursor: pointer;
+background-image: url('chrome-extension://__MSG_@@extension_id__/images/state2.png');
+
 }
 
 .popup{
@@ -32,7 +34,7 @@ cursor: pointer;
   margin-right: 30px;
 }
 
-@keyframes assistant-disappear {
+/* @keyframes assistant-disappear {
     0% {
       background-position-x: 0;
     }
@@ -64,7 +66,7 @@ cursor: pointer;
     background-size: 180px 30px;
     background-position-x: -150px;
     animation: assistant-reappear 0.8s steps(6);
-}
+} */
 
 #mainChat { 
   position: fixed;
