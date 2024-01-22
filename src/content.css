@@ -5,17 +5,59 @@
   background-size: cover;
   position: fixed;
   bottom: 0;
-  margin: 10px;
+  left: -10;
   border-radius: 40px;
 }
+
+@keyframes item-disappearing {
+  0% {
+    filter: blur(0px);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    filter: blur(8px);
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.item-disappearing {
+  animation: item-disappearing 1s;
+}
+
+@keyframes vibrate {
+  0% {
+    transform: scale(1.1) translateX(-2px)
+  }
+  50% {
+    transform: scale(1.1) translateX(2px)
+  }
+  100% {
+    transform: scale(1.1) translateX(-2px)
+  }
+}
+
+.vibrate {
+  height: 250px;
+  width: 250px;
+  background-image: url('https://i.imgur.com/wWlP2hj.png');
+  background-size: cover;
+  position: fixed;
+  bottom: 0;
+  left: -10;
+  border-radius: 40px;
+  animation: vibrate 0.1s 12;
+} 
 
 .speech-bubble {
   display: block;
   position: fixed;
   width: fit-content;
   padding: 60px;
-  margin-left: 20px;
-  bottom: 220px;
+  margin-left: 40px;
+  bottom: 200px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -34,44 +76,11 @@ background-image: url('https://i.imgur.com/BWA18Ur.png');
   margin-right: 30px;
 }
 
-/* @keyframes assistant-disappear {
-    0% {
-      background-position-x: 0;
-    }
-    100% {
-      background-position-x: -180px;
-    }
-}
-  
-.assistant.disappear {
-    background-image: url("https://media.istockphoto.com/id/1437494646/vector/teddy-bear-icon-flat-design.jpg?s=612x612&w=0&k=20&c=aeYCyB52MMpbp20ZNttzOwMOTBY4-V7aXSXH5SVr30M=");
-    background-repeat: repeat-x;
-    background-size: 180px 30px;
-    background-position: 0 0;
-    animation: assistant-disappear 0.8s steps(6);
-}
-  
-@keyframes assistant-reappear {
-    0% {
-      background-position-x: -150px;
-    }
-    100% {
-      background-position-x: 30px;
-    }
-}
-  
-.assistant.reappear {
-    background-image: url("https://media.istockphoto.com/id/1437494646/vector/teddy-bear-icon-flat-design.jpg?s=612x612&w=0&k=20&c=aeYCyB52MMpbp20ZNttzOwMOTBY4-V7aXSXH5SVr30M=");
-    background-repeat: repeat-x;
-    background-size: 180px 30px;
-    background-position-x: -150px;
-    animation: assistant-reappear 0.8s steps(6);
-} */
-
 #mainChat { 
   position: fixed;
   width: 30%;
   height: 50%;
+  left: 140px;
   bottom: 60px;
   background-color: white;
   border-radius: 10px;
@@ -97,7 +106,7 @@ background-image: url('https://i.imgur.com/BWA18Ur.png');
 }
 
 #chatHeader {
-  background-color: lightgrey;
+  background-color: skyblue;
   height: 50px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -112,12 +121,11 @@ background-image: url('https://i.imgur.com/BWA18Ur.png');
 }
 
 #closeChatBox {
-  display: inline-block;
-  margin-left: 36%;
-  height: fit-content;
+  display: inline-block; 
+  margin-left: 80px;
+  height: 35px;
   width: fit-content;
   border-radius: 20px;
-  align-items: center;
 }
 
 .messages {

@@ -1,6 +1,6 @@
 function app() {
   let remainingTeleports = 99;
-  let count = 0; //1
+  let count = 0; 
 
   function init() {
     const assistant = document.createElement('div');
@@ -22,9 +22,37 @@ function app() {
     closeButton.innerHTML = 'Go away';
     closeButton.classList.add('btn', 'btn-outline-danger', 'position-fixed', 'bottom-0', 'right-0', 'm-2');
     speechBubble.appendChild(closeButton);
-
+  
     originalPosition = { x: assistant.offsetLeft, y: assistant.offsetTop };
-      
+
+    document.addEventListener('mouseover', function(event) {
+    
+      const isClickableElement =
+        event.target.matches('button') ||
+        (event.target.tagName === 'INPUT' && event.target.type === 'submit') ||
+        event.target.getAttribute('role') === 'button';
+    
+      if (isClickableElement && event.target!=closeButton && event.target.id!='closeChatBox' && !clicked) {
+    
+        document.getElementById('bubble').style.display = 'none';
+
+        setTimeout(function() {
+          assistant.classList.replace('assistant','vibrate');
+          event.target.classList.add('item-disappearing');
+          
+          event.target.addEventListener('animationend', function() {
+            event.target.remove();
+            assistant.classList.replace('vibrate','assistant');
+            setTimeout(function(){
+              if (!clicked){
+              document.getElementById('bubble').style.display = 'block';
+              }
+            }, 1000)
+          });
+        }, 1200);
+      }
+    });
+
     let clicked = false;
     let loaded = true;
     const answers = [
@@ -42,7 +70,7 @@ function app() {
       <div id="mainChat">
         <div id="chatHeader">
           <p id="chatboxTitle">Chat</p>
-          <button id="closeChatBox" class="btn btn-danger" type="button">&times</button>
+          <button id="closeChatBox" class="btn btn-outline-danger" type="button">Close :(</button>
         </div>
         <div id="messagesContainer">
           <div id="messages" type="text"></div>
@@ -71,8 +99,17 @@ function app() {
     
     function output(input) {
       let product;
-      product = answers[Math.round(Math.random() * (answers.length - 1))];
-      addChatEntry(input, product);
+      const shouldRedirect = Math.random() < 0.6;
+      if (shouldRedirect){
+        addChatEntry(input, "Here's a link I think will help! Redirecting in 3....2....1")
+        setTimeout(function(){
+          window.location.href = 'https://www.shopee.sg'
+        }, 3000)
+        
+      } else {
+        product = answers[Math.round(Math.random() * (answers.length - 1))];
+        addChatEntry(input, product);
+      }
       return true;
     }
     
@@ -119,6 +156,7 @@ function app() {
       assistant.addEventListener('click', async event => {
         document.getElementById('bubble').style.display = 'none';
         teleportAssistant();
+        //ouch.play();
         count++;
         if (!clicked && remainingTeleports < 0) {
           clicked = true;
@@ -127,9 +165,18 @@ function app() {
       })
     }, 3000);
 
-    speechBubble.addEventListener('click', function () {
-      document.getElementById('root').style.display = 'none';
-    });
+    setTimeout(function () {
+      speechBubble.addEventListener('click', async event => {
+        document.getElementById('bubble').style.display = 'none';
+        teleportAssistant();
+        count++;
+        if (!clicked && remainingTeleports < 0) {
+          clicked = true;
+          await displayChatBox();
+        }
+      })
+    }, 3000);
+
 
     closeButton.addEventListener('click', function (event) {
       document.getElementById('bubble').style.display = 'none';
@@ -138,6 +185,7 @@ function app() {
     });
 
   }
+  //var ouch = new Audio(chrome.runtime.getURL("/audio/ow.mp3"));
   
   function injectBootstrap() {
       const bootstrapCSS = document.createElement('link');
