@@ -1,6 +1,6 @@
 function app() {
   let remainingTeleports = 99;
-  let count = 0; 
+  let count = 0; //1
 
   function init() {
     const assistant = document.createElement('div');
